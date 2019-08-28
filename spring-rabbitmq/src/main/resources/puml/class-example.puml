@@ -1,0 +1,22 @@
+@startuml
+title PlatUML 类图
+/'这个是注释'/
+/'类图参考地址：https://blog.csdn.net/junhuahouse/article/details/80767632'/
+interface Runnable {
+    + void run()
+}
+
+class MyTask {
+    - String taskName
+    # String protectedField
+    + void setTaskName()
+}
+
+
+ClassA <-- ClassB:关联
+ClassA <.. ClassB : 依赖
+ClassA o-- ClassB:聚集
+ClassA <|-- ClassB:泛化
+ClassA <|.. ClassB:实现
+
+@enduml

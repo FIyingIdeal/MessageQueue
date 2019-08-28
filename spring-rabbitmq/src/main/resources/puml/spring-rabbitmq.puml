@@ -1,0 +1,77 @@
+@startuml
+
+interface ConnectionFactory {
+}
+
+interface RoutingConnectionFactory {
+    + ConnectionFactory getTargetConnectionFactory(Object key);
+}
+
+abstract AbstractConnectionFactory {
+}
+
+class CachingConnectionFactory {
+}
+
+class LocalizedQueueConnectionFactory {
+}
+
+abstract AbstractRoutingConnectionFactory {
+}
+
+class SimpleRoutingConnectionFactory {
+}
+
+ConnectionFactory <|.. AbstractConnectionFactory
+ConnectionFactory <|.. AbstractRoutingConnectionFactory
+ConnectionFactory <|.. LocalizedQueueConnectionFactory
+RoutingConnectionFactory <|.. AbstractRoutingConnectionFactory
+RoutingConnectionFactory <|.. LocalizedQueueConnectionFactory
+AbstractConnectionFactory <|-- CachingConnectionFactory
+AbstractRoutingConnectionFactory <|-- SimpleRoutingConnectionFactory
+
+/'MessageListenerContainer'/
+interface MessageListenerContainer {
+}
+
+abstract AbstractMessageListenerContainer {
+}
+
+class SimpleMessageListenerContainer {
+}
+
+class DirectMessageListenerContainer {
+}
+
+class DirectReplyToMessageListenerContainer {
+}
+
+MessageListenerContainer <|.. AbstractMessageListenerContainer
+AbstractMessageListenerContainer <|-- SimpleMessageListenerContainer
+AbstractMessageListenerContainer <|-- DirectMessageListenerContainer
+DirectMessageListenerContainer <|-- DirectReplyToMessageListenerContainer
+
+
+
+/'RabbitListenerContainerFactory'/
+interface RabbitListenerContainerFactory<C extends MessageListenerContainer> {
+}
+
+abstract AbstractRabbitListenerContainerFactory<C extends AbstractMessageListenerContainer> {
+}
+
+class SimpleRabbitListenerContainerFactory {
+}
+
+class MySimpleRabbitListenerContainerFactory {
+}
+
+class DirectRabbitListenerContainerFactory {
+}
+
+RabbitListenerContainerFactory <|.. AbstractRabbitListenerContainerFactory
+AbstractRabbitListenerContainerFactory <|-- SimpleRabbitListenerContainerFactory
+SimpleRabbitListenerContainerFactory <|-- MySimpleRabbitListenerContainerFactory
+AbstractRabbitListenerContainerFactory <|-- DirectRabbitListenerContainerFactory
+
+@enduml
