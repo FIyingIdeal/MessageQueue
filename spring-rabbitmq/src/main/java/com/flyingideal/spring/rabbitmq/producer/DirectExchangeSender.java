@@ -1,4 +1,4 @@
-package com.flyingideal.spring.rabbitmq.sender;
+package com.flyingideal.spring.rabbitmq.producer;
 
 import com.flyingideal.spring.rabbitmq.config.RabbitMQConstant;
 import org.springframework.amqp.core.AmqpAdmin;

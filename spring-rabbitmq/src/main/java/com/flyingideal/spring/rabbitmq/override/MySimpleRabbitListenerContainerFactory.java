@@ -1,4 +1,4 @@
-package com.flyingideal.spring.rabbitmq.rewrite;
+package com.flyingideal.spring.rabbitmq.override;
 
 import com.flyingideal.spring.rabbitmq.config.RabbitMQConfig;
 

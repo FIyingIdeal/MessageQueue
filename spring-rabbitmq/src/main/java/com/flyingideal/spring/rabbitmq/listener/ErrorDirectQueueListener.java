@@ -1,6 +1,7 @@
 package com.flyingideal.spring.rabbitmq.listener;
 
 import com.flyingideal.spring.rabbitmq.config.RabbitMQConstant;
+import com.flyingideal.spring.rabbitmq.override.MySimpleRabbitListenerContainerFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
@@ -31,12 +32,12 @@ public class ErrorDirectQueueListener {
     private Random random = new Random(47);
 
     /**
-     * 自定义 {@link SimpleRabbitListenerContainerFactory}
+     * 自定义 {@link MySimpleRabbitListenerContainerFactory}
      */
-    @Bean(name = "rabbitListenerContainerFactory")
+    // @Bean(name = "rabbitListenerContainerFactory")
     public SimpleRabbitListenerContainerFactory simpleRabbitListenerContainerFactory(
             SimpleRabbitListenerContainerFactoryConfigurer configurer, ConnectionFactory connectionFactory) {
-        SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
+        SimpleRabbitListenerContainerFactory factory = new MySimpleRabbitListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
         return factory;
     }

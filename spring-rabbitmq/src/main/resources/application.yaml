@@ -4,8 +4,11 @@ spring:
     port: 5672
     username: admin
     password: admin
+    # 消息生产者发送消息确认
+    publisher-confirms: true
+    publisher-returns: true
 
 learn:
   rabbitmq:
     consumer:
-      error: true
+      error: false

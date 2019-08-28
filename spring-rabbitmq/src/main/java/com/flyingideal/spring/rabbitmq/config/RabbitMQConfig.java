@@ -1,6 +1,5 @@
 package com.flyingideal.spring.rabbitmq.config;
 
-import com.flyingideal.spring.rabbitmq.rewrite.MySimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;

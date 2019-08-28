@@ -1,6 +1,6 @@
 package com.flyingideal.spring.rabbitmq.job;
 
-import com.flyingideal.spring.rabbitmq.sender.DirectExchangeSender;
+import com.flyingideal.spring.rabbitmq.producer.DirectExchangeSender;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
