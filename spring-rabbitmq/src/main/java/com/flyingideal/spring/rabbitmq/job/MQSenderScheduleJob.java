@@ -12,7 +12,7 @@ import org.springframework.scheduling.annotation.Scheduled;
  * @date 2019-08-23 15:00
  */
 @Slf4j
-@Configuration
+// @Configuration
 @ConditionalOnProperty(prefix = "learn.rabbitmq", name = "consumer.error", havingValue = "false", matchIfMissing = true)
 public class MQSenderScheduleJob {
 

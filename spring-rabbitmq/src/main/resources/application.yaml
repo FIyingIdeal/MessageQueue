@@ -2,13 +2,28 @@ spring:
   rabbitmq:
     host: localhost
     port: 5672
-    username: admin
-    password: admin
-    # 消息生产者发送消息确认
+    username: guest
+    password: guest
+    # 消息生产者发送消息确认，设置为true时，只有在消息到达或未到达 exchange 会回调 RabbitTemplate#ConfirmCallback#confirm() 方法
     publisher-confirms: true
+    # 消息生产者发送消息确认，设置为true时，只有在消息<b>未到达队列</b>时才会回调 RabbitTemplate#ReturnCallback#returnedMessage() 方法
     publisher-returns: true
+    # listener 中包含两种 AmqpContainer ：DirectContainer 和 SimpleContainer，SpringBoot 默认会配置 SimpleContainer。
+    listener:
+      # directContainer 配置
+      direct:
+        acknowledge-mode: manual
+        # 消费者所能保持的最大未确认消息的数量，如果为0表示没有上限，该参数适用于推模式。拉模式下，该参数无效。因为拉取多少消费者"自己掌握尺度"。
+        prefetch: 1
+      # simpleContainer 配置
+      simple:
+        acknowledge-mode: manual
+        # 消费者所能保持的最大未确认消息的数量
+        prefetch: 1
 
 learn:
   rabbitmq:
     consumer:
       error: false
+    queue:
+      auto-create: true

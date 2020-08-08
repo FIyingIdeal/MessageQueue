@@ -11,5 +11,17 @@
 
     <artifactId>kafka</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.58</version>
+        </dependency>
+    </dependencies>
 
 </project>

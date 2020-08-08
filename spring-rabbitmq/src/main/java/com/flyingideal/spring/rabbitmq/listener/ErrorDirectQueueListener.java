@@ -8,7 +8,6 @@ import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFacto
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.boot.autoconfigure.amqp.SimpleRabbitListenerContainerFactoryConfigurer;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Random;
@@ -50,10 +49,10 @@ public class ErrorDirectQueueListener {
     public void errorConsumer(String content) {
         log.info(">>> Thread {} receive message : {}", Thread.currentThread().getName(), content);
         String errorMessage = "error";
-        if (content.contains(errorMessage) && counter++ < 1) {
+        if (content.contains(errorMessage) /*&& counter++ < 1*/) {
             // 当消息内容是 error 的时候，抛出一个 error 进行测试
-            throw new Error("rabbitmq error 测试");
-            // throw new RuntimeException("rabbitmq exception 测试");
+            // throw new Error("rabbitmq error 测试");
+            throw new RuntimeException("rabbitmq exception 测试");
         }
 
         try {

@@ -21,7 +21,7 @@ public class ErrorDirectExchangeSender {
     @Autowired
     private DirectExchangeSender directExchangeSender;
 
-    @Scheduled(initialDelay = 1000, fixedRate = 3600 * 1000)
+    // @Scheduled(initialDelay = 1000, fixedRate = 3600 * 1000)
     public void directExchangeErrorSender() {
 
         for (int i = 1; i < 7; i++) {

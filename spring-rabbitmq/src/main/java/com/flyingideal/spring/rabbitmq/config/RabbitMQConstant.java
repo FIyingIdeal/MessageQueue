@@ -9,6 +9,7 @@ public class RabbitMQConstant {
     public static final String DIRECT_EXCHANGE_NAME = "direct-exchange-test";
     public static final String DIRECT_QUEUE_NAME = "direct-queue-test";
     public static final String DIRECT_BINDING = "direct-binding";
+    public static final String DIRECT_BINDING_WITH_AE = "direct-binding-with-ae";
 
     public static final String TOPIC_EXCHANGE_NAME = "topic-exchange-test";
     public static final String TOPIC_QUEUE_NAME = "topic-queue-test";

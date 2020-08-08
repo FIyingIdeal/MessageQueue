@@ -60,4 +60,19 @@ public class DirectExchangeSender {
     public void sendMessage(String exchange, String routingKey, Object message) {
         this.amqpTemplate.convertAndSend(exchange, routingKey, message);
     }
+
+
+    public void sendTtlMessage(Object message, long ttl) {
+        this.sendTtlMessage(RabbitMQConstant.DIRECT_EXCHANGE_NAME, RabbitMQConstant.DIRECT_BINDING, message, ttl);
+    }
+
+    /**
+     * 发送带 ttl 的消息
+     */
+    public void sendTtlMessage(String exchange, String routingKey, Object message, long ttl) {
+        this.amqpTemplate.convertAndSend(exchange, routingKey, message, m -> {
+            m.getMessageProperties().setExpiration(String.valueOf(ttl));
+            return m;
+        });
+    }
 }
