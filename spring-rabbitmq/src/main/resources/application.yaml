@@ -14,12 +14,12 @@ spring:
       direct:
         acknowledge-mode: manual
         # 消费者所能保持的最大未确认消息的数量，如果为0表示没有上限，该参数适用于推模式。拉模式下，该参数无效。因为拉取多少消费者"自己掌握尺度"。
-        prefetch: 1
+        prefetch: 2
       # simpleContainer 配置
       simple:
         acknowledge-mode: manual
         # 消费者所能保持的最大未确认消息的数量
-        prefetch: 1
+        prefetch: 2
 
 learn:
   rabbitmq:

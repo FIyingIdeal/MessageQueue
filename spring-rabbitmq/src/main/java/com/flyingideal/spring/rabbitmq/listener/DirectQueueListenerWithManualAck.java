@@ -27,9 +27,9 @@ public class DirectQueueListenerWithManualAck {
             // 如果抛出异常，则会一直重试；如果抛出 Error 的话，则抛出 Error 消费者线程会退出，其他线程不受影响
             if (content.contains("manualack")) {
                 // throw new IllegalArgumentException("手动消息确认异常测试");
-                throw new Error();
+                throw new OutOfMemoryError();
             }
-            TimeUnit.SECONDS.sleep(3);
+            TimeUnit.SECONDS.sleep(10);
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
         } catch (Exception e) {
             log.error("Error: direct message with manual ack consume error :{}, {}", e.getMessage(),

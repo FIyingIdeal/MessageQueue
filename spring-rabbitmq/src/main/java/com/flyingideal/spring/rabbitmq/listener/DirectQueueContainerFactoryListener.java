@@ -14,6 +14,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author yanchao
  * @date 2019-08-23 11:53
@@ -42,6 +44,7 @@ public class DirectQueueContainerFactoryListener {
     public void directQueueJsonConsumer(String content, Channel channel, Message message) throws Exception {
         log.info(">>> directQueueJsonConsumer(String) receive message : [{}]", content);
         try {
+            TimeUnit.SECONDS.sleep(10);
             if ("manual".equals(environment.getProperty("spring.rabbitmq.listener.simple.acknowledge-mode"))) {
                 channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
             }
