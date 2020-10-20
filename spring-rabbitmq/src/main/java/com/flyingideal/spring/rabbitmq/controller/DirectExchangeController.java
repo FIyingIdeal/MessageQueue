@@ -39,4 +39,13 @@ public class DirectExchangeController {
         this.directExchangeSender.sendTtlMessage(message, ttl);
         return message;
     }
+
+    @GetMapping("/message/ttl/exchange")
+    public String sendTtlMessageWithExchange(@RequestParam("ttl") long ttl,
+                                             @RequestParam("exchange") String exchange,
+                                             @RequestParam("routingKey") String routingKey,
+                                             @RequestParam("message") String message) {
+        this.directExchangeSender.sendTtlMessage(exchange, routingKey, message, ttl);
+        return message;
+    }
 }

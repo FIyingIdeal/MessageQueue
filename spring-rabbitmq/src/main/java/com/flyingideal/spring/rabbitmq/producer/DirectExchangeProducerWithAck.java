@@ -61,7 +61,7 @@ public class DirectExchangeProducerWithAck
      *      1. exchange 未与存在的队列通过指定的 routing-key 进行绑定；
      *      2. 队列不存在；
      *
-     * 另外，需要注意的是，如果发送消息给一个设置了备份交换机的交换机，在消息无法被路由到队列是，消息会被路由到备份交换机，
+     * 另外，需要注意的是，如果发送消息给一个设置了备份交换机的交换机，在消息无法被路由到队列时，消息会被路由到备份交换机，
      * 此时 returnedMessage 将不会生效
      * @param message       消息内容
      * @param replyCode     应答码
